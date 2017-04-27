@@ -1,8 +1,14 @@
 <h1>Questions</h1>
+<div class="row">
+  <div class="col-sm-8">
+    <% @questions.each do |q| %>
+      <div class='question panel'>
+        <%= link_to q.title, question_path(q) %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
 
-<% @questions.each do |q| %>
-    <div class='question'>
-      <%= link_to q.title, question_path(q) %>
-    </div>
 
-<% end %>
+
