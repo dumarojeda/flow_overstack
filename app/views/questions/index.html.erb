@@ -13,9 +13,9 @@
         </div>
         <div class="data">
           <ul>
-            <li class="comments">30</li>
-            <li class="votes"><%= fa_icon "thumbs-o-up" %> 45 votes</li>
-            <li class="time"><%= fa_icon "clock-o" %><%= q.created_at.pretty %></li>
+            <li class="comments"><%= q.answers.size %></li>
+            <li class="votes"><%= fa_icon "thumbs-o-up" %> <%= q.votes.size %> votes</li>
+            <li class="time"><%= fa_icon "clock-o" %> <%= q.created_at.pretty %></li>
           </ul>
         </div>
       </div>
