@@ -33,6 +33,9 @@ body {
 }
 a {
   color: $color_title;
+  &:hover {
+    color: lighten($color_title, 30%);
+  }
 }
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -93,10 +96,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   padding: 1em
 }
-.question {
+.question-preview {
+  padding: 0;
   .author {
     text-align: center;
-    padding: 0 1em 0 0;
+    padding: 1em 0.5em;
     width: 10%;
     .image_author {
       width: 40px;
@@ -104,6 +108,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .name_author {
       font-size: 10px;
+      color: $color_content;
     }
   }
   .author, .content, .data {
@@ -111,20 +116,62 @@ h1, h2, h3, h4, h5, h6 {
     vertical-align: top;
   }
   .content {
-    width: 70%;
+    width: 75%;
+    padding: 1em 1em 1em 0;
     .title {
-      margin: 0
+      margin: 0;
+      font-weight: 400;
+    }
+    .excerpt {
+      color: $color_content;
     }
   }
   .data {
-    width: 20%;
-    padding: 1.2em 0 0 1.5em;
+    width: 15%;
+    border-left: solid 1px #f1f1f1;
     ul {
       margin: 0;
       padding: 0;
+      text-align: center;
       li {
         list-style-type: none;
-
+        display: block;
+        padding: 0.5em 0;
+        &.comments {
+          background: #bdc3c7;
+          border-radius: 2px;
+          display: inline-block;
+          padding: 8px 12px;
+          color: #ffffff;
+          font-size: 14px;
+          position: relative;
+          margin: 1em 0 0.5em;
+          border-bottom: solid 1px #f1f1f1;
+          &:after {
+            content: '';
+            width: 11px;
+            height: 11px;
+            background-color: #bdc3c7;
+            position: absolute;
+            bottom: 0;
+            left: 43%;
+            margin-bottom: -5px;
+            transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+          }
+        }
+        &.votes {
+          border-top: solid 1px #f1f1f1;
+          border-bottom: solid 1px #f1f1f1;
+        }
+        &.votes, &.time {
+          font-size: 12px;
+          color: $color_content;
+        }
+        &.time {
+          padding: 0.5em 0 1em;
+        }
       }
     }
   }

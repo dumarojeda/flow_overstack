@@ -41,8 +41,10 @@ gem 'devise'
 gem 'bootstrap-sass'
 # Use Gravtastic for get gravatar of the users
 gem 'gravtastic'
-# User Fontawesome Gem for Icons
+# Use Fontawesome Gem for Icons
 gem "font-awesome-rails"
+# Use Hublot gem for prettify Dates
+gem "hublot"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
