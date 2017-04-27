@@ -93,3 +93,43 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   padding: 1em
 }
+.question {
+  .author {
+    text-align: center;
+    padding: 0 1em 0 0;
+    width: 10%;
+    .image_author {
+      width: 40px;
+      border-radius: 50%;
+    }
+    .name_author {
+      font-size: 10px;
+    }
+  }
+  .author, .content, .data {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .content {
+    width: 70%;
+    .title {
+      margin: 0
+    }
+  }
+  .data {
+    width: 20%;
+    padding: 1.2em 0 0 1.5em;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style-type: none;
+
+      }
+    }
+  }
+}
+
+
+
+

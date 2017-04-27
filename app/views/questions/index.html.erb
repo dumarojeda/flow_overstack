@@ -3,7 +3,20 @@
   <div class="col-sm-8">
     <% @questions.each do |q| %>
       <div class='question panel'>
-        <%= link_to q.title, question_path(q) %>
+        <div class="author">
+          <%= image_tag q.user.gravatar_url, class: 'image_author'  %>
+          <div class="name_author"><%= q.user.name %></div>
+        </div>
+        <div class="content">
+          <h4 class="title"><%= link_to q.title, question_path(q) %></h4>
+          <div class="excerpt"><%= truncate(q.description, length: 170) %></div>
+        </div>
+        <div class="data">
+          <ul>
+            <li><%= fa_icon "thumbs-o-up" %> 45 votes</li>
+            <li><%= fa_icon "comment-o" %> 30 comments</li>
+          </ul>
+        </div>
       </div>
     <% end %>
   </div>
