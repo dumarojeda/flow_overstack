@@ -21,6 +21,22 @@
 
 //Vars
 $color_brand : #1abc9c;
+$color_base : #333333;
+$color_title : #363838;
+$color_content : #989c9e;
+$background_color : #ecf0f1;
+
+//Tags
+body {
+  font-family: 'Droid Sans', sans-serif;
+  color: $color_base;
+}
+a {
+  color: $color_title;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
 
 //Header
 .navbar-custom {
@@ -50,7 +66,7 @@ $color_brand : #1abc9c;
 }
 //Content
 .wrapper-content {
-  background-color: #ecf0f1;
+  background-color: $background-color;
   border-top: solid 1px #e0e4e5;
   padding: 2em 0 1em;
 }
