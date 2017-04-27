@@ -6,7 +6,28 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Question.create(title:'What came first: the egg or the chicken?', description:'Es un dilema lleno de ambigüedad que condujo a los filósofos antiguos a cuestionar cómo se originó la vida y el Universo. Si las gallinas ponen huevos y de ellos provienen los pollos ¿Quien fue primero?', user_id: 1)
-Question.create(title:'Why is there something before anything?', description:'Parece justo que la existencia sea el primero de estos grandes enigmas. ¿Por qué algo existe cuando parece perfectamente posible que la nada fuera la norma? ¿Qué impulso secreto del universo físico fue el decisivo para que la nada se convirtiera en algo?', user_id: 1)
-Question.create(title:'Where were you before being born?', description:'Saber exactamente donde estabas antes de nacer es una cuestion que se podria resolver con un punto de vista espiritual. ¿Cual seria una respuesta objetiva?', user_id: 1)
-Question.create(title:'Is this all a dream?', description:'Llegados a este punto esta pregunta es obvia. Si todos somos capaces de ejecutar mundos virtuales muy realistas en nuestras cabezas, y no tenemos ni idea de cómo lo hacemos (los sueños) ¿por qué no iba a ser todo una creación de nuestra mente?', user_id: 1)
+# Create Users
+# User.create(name:'Juan David', email:'rangeljdr@gmail.com', password: "123456", password_confirmation: "123456")
+# User.create(name:'Dumar', email:'dumarojeda@gmail.com', password: "123456", password_confirmation: "123456")
+# User.create(name:'Juan', email: "j.gomez267@gmail.com", password: "123456", password_confirmation: "123456")
+# User.create(name:'Diana', email: "dalvarez131@gmail.com", password: "123456", password_confirmation: "123456")
+# User.create(name:'Miguel', email: "msoler735@gmail.com", password: "123456", password_confirmation: "123456")
+# User.create(name:'Roberto', email: "rueda.roberto89@gmail.com", password: "123456", password_confirmation: "123456")
+# User.create(name:'Melissa', email: "melissa166@gmail.com", password: "123456", password_confirmation: "123456")
+# User.create(name:'Victor', email: "vialfonsuo@gmail.com", password: "123456", password_confirmation: "123456")
+# User.create(name:'Nicolas', email: "nicolaspovedas@gmail.com", password: "123456", password_confirmation: "123456")
+
+# Create Questions
+# (1..9).each do |i|
+#   Question.create(title:Faker::Book.title, description:Faker::ChuckNorris.fact, user_id: i)
+# end
+
+# Create Answers
+# (1..9).each do |i|
+#   Answer.create(description: 'Opino que seria bueno encontrar la manera de dar una solucion para esta respuesta.', question_id: i, user_id: 1)
+# end
+
+# Create Votes
+# (1..9).each do |i|
+#   Answer.create(description: 'Opino que seria bueno encontrar la manera de dar una solucion para esta respuesta.', question_id: i, user_id: 1)
+# end

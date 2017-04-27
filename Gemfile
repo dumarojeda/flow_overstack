@@ -45,6 +45,8 @@ gem 'gravtastic'
 gem "font-awesome-rails"
 # Use Hublot gem for prettify Dates
 gem "hublot"
+# User Faker for create fake content
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
