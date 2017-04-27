@@ -1,8 +1,26 @@
 <div class="row">
   <div class="col-sm-8">
-    <div class="question-full panel">
+    <div class="question panel">
       <h1><%= @question.title %></h1>
       <p><%= @question.description %></p>
+    </div>
+    <div class="answers">
+      <div class="count_answers"><%= @question.answers.count %> Answers</div>
+      <% @question.answers.each do |a| %>
+        <div class="answer_single panel">
+          <div class="author">
+            <%= image_tag a.user.gravatar_url, class: 'image_author'  %>
+            <div class="name_author"><%= a.user.name %></div>
+          </div>
+          <div class="content">
+            <p><%= a.description %></p>
+            <p class="time"><%= fa_icon "clock-o" %> <%= a.created_at.pretty %></p>
+          </div>
+          <div class="data">
+
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="col-sm-4"></div>

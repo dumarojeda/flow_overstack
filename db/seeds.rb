@@ -24,10 +24,5 @@
 
 # Create Answers
 # (1..9).each do |i|
-#   Answer.create(description: 'Opino que seria bueno encontrar la manera de dar una solucion para esta respuesta.', question_id: i, user_id: 1)
-# end
-
-# Create Votes
-# (1..9).each do |i|
-#   Answer.create(description: 'Opino que seria bueno encontrar la manera de dar una solucion para esta respuesta.', question_id: i, user_id: 1)
+#   Answer.create(description: 'Opino que seria bueno encontrar la manera de dar una solucion para esta respuesta.', question_id: i, user_id: User.all.pluck(:id).sample)
 # end
