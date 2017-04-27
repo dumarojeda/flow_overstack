@@ -17,3 +17,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap/theme';
+
+.user-menu {
+  padding: 5px 10px !important;
+  .image_gravatar {
+    width: 40px;
+    border-radius: 50%;
+  }
+}

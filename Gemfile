@@ -35,8 +35,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Devise Gem for authentication users
 gem 'devise'
+# Use Bootstrap Sass Gem for basic stylesheets
 gem 'bootstrap-sass'
+# Use Gravtastic for get gravatar of the users
+gem 'gravtastic'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
