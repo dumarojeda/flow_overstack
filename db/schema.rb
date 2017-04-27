@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20170426002042) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "description"
+    t.integer  "question_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -25,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170426002042) do
     t.text     "description"
     t.integer  "comentable_id"
     t.string   "commentable_type"
+    t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -32,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170426002042) do
   create_table "questions", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -54,9 +58,9 @@ ActiveRecord::Schema.define(version: 20170426002042) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "count"
     t.integer  "votable_id"
     t.string   "votable_type"
+    t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
