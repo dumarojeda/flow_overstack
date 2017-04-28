@@ -10,13 +10,15 @@
         <div class="content">
           <h4 class="title"><%= link_to q.title, question_path(q) %></h4>
           <div class="excerpt"><%= truncate(q.description, length: 300) %></div>
-          <% if current_user.id == q.user.id %>
-            <div class="menu-questions">
-              <ul>
-                <li class="edit"><%= fa_icon "edit" %><%= link_to ' Edit question', edit_question_path(q) %></li>
-                <li class="delete"><%= fa_icon "trash-o" %><%= link_to ' Delete question', question_path(q), method: :delete, data: { confirm: 'Are you sure?' } %></li>
-              </ul>
-            </div>
+          <% if current_user %>
+            <% if current_user.id == q.user.id %>
+              <div class="menu-questions">
+                <ul>
+                  <li class="edit"><%= fa_icon "edit" %><%= link_to ' Edit question', edit_question_path(q) %></li>
+                  <li class="delete"><%= fa_icon "trash-o" %><%= link_to ' Delete question', question_path(q), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                </ul>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <div class="data">

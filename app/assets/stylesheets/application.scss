@@ -56,12 +56,21 @@ h1, h2, h3, h4, h5, h6 {
     & > li > a {
       padding-top: 25px;
       padding-bottom: 25px;
+      &.user-menu {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        .image_gravatar {
+          width: 40px;
+          border-radius: 50%;
+        }
+      }
     }
   }
   .navbar-form {
     margin-top: 12px;
     .form-control {
       border-radius: 4px 0 0 4px;
+      height: 44px;
       &:focus {
         border-color: transparent;
         -webkit-box-shadow: 0 0 0 transparent;
@@ -71,12 +80,6 @@ h1, h2, h3, h4, h5, h6 {
     .btn {
       background: #697683;
       border-radius: 0 4px 4px 0;
-    }
-  }
-  .user-menu {
-    .image_gravatar {
-      width: 40px;
-      border-radius: 50%;
     }
   }
 }
@@ -223,6 +226,12 @@ h1, h2, h3, h4, h5, h6 {
 //Notifications
 .alert-danger {
   background-color: lighten($red, 10%);
+  background-image: none;
+  color: #ffffff;
+  border: 0;
+}
+.alert-success {
+  background-color: lighten($color_brand, 10%);
   background-image: none;
   color: #ffffff;
   border: 0;
