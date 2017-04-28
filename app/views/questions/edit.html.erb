@@ -1,8 +1,29 @@
 <div class="row">
   <div class="col-sm-8">
     <div class="question-full panel">
-      <h1>Questions#edit</h1>
-      <p>Find me in app/views/questions/edit.html.erb</p>
+      <h1>Edit Question</h1>
+      <% if @errors %>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <% @errors.each do |error| %>
+          <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <%= form_for(@question) do |f| %>
+        <div class="form-group">
+          <%= f.label :title %><br />
+          <%= f.text_field :title, class: 'form-control', placeholder: 'Write your question here...' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %><br />
+          <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your description here...' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update", class: 'btn btn-custom' %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="col-sm-4"></div>

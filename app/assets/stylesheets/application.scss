@@ -25,6 +25,7 @@ $color_base : #333333;
 $color_title : #363838;
 $color_content : #989c9e;
 $background_color : #ecf0f1;
+$red : #db7a7a;
 
 //Tags
 body {
@@ -138,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
     vertical-align: top;
   }
   .content {
-    width: 75%;
+    width: 73%;
     padding: 1em 1em 1em 0;
     .title {
       margin: 0;
@@ -147,9 +148,33 @@ h1, h2, h3, h4, h5, h6 {
     .excerpt {
       color: $color_content;
     }
+    .menu-questions {
+      padding: 1em 0 0;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          display: inline-block;
+          list-style: none;
+          margin: 0 1em;
+          &.edit {
+            color: $color_brand;
+            a {
+              color: $color_brand;
+            }
+          }
+          &.delete {
+            color: $red;
+            a {
+              color: $red;
+            }
+          }
+        }
+      }
+    }
   }
   .data {
-    width: 15%;
+    width: 17%;
     border-left: solid 1px #f1f1f1;
     ul {
       margin: 0;
@@ -159,42 +184,51 @@ h1, h2, h3, h4, h5, h6 {
         list-style-type: none;
         display: block;
         padding: 0.5em 0;
-        &.answers_data {
+        border-top: solid 1px #f1f1f1;
+        font-size: 12px;
+        color: $color_content;
+        .answers_data {
           background: #bdc3c7;
           border-radius: 2px;
-          display: inline-block;
-          padding: 8px 12px;
+          display: block;
+          padding: 5px;
           color: #ffffff;
           font-size: 14px;
           position: relative;
-          margin: 1em 0;
+          margin: 0.5em auto;
           border-bottom: solid 1px #f1f1f1;
+          width: 30px;
+          height: 30px;
           &:after {
             content: '';
-            width: 11px;
-            height: 11px;
+            width: 10px;
+            height: 10px;
             background-color: #bdc3c7;
             position: absolute;
             bottom: 0;
-            left: 43%;
+            left: 37%;
             margin-bottom: -5px;
             transform: rotate(45deg);
             -ms-transform: rotate(45deg);
             -webkit-transform: rotate(45deg);
           }
         }
-        &.votes {
-          border-top: solid 1px #f1f1f1;
-          border-bottom: solid 1px #f1f1f1;
-        }
-        &.votes, &.time {
-          font-size: 12px;
-          color: $color_content;
-        }
-        &.time {
-          padding: 0.5em 0 1em;
+        &:first-child {
+          border-top: 0;
         }
       }
     }
+  }
+}
+//Notifications
+.alert-danger {
+  background-color: lighten($red, 10%);
+  background-image: none;
+  color: #ffffff;
+  border: 0;
+}
+.alert {
+  > ul {
+    padding: 0 0 0 1em;
   }
 }
