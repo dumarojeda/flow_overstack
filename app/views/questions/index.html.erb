@@ -13,8 +13,9 @@
         </div>
         <div class="data">
           <ul>
-            <li class="comments"><%= q.answers.size %></li>
+            <li class="answers_data"><%= q.answers.size %></li>
             <li class="votes"><%= fa_icon "thumbs-o-up" %> <%= q.votes.size %> votes</li>
+            <li class="votes"><%= fa_icon "comment-o" %> <%= q.comments.size %> comments</li>
             <li class="time"><%= fa_icon "clock-o" %> <%= q.created_at.pretty %></li>
           </ul>
         </div>
@@ -23,6 +24,3 @@
   </div>
   <div class="col-sm-4"></div>
 </div>
-
-
-

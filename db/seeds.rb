@@ -44,10 +44,10 @@ end
 
 # Create comments for questions
 (1..9).each do |i|
-  Comment.create!(description: Faker::StarWars.quote, commentable_id: Question.last.id, commentable_type: "Question", user_id: User.all.pluck(:id).sample )
+  Comment.create!(description: Faker::StarWars.quote, commentable_id: Question.all.pluck(:id).sample, commentable_type: "Question", user_id: User.all.pluck(:id).sample )
 end
 
 # Create comments for answers
 (1..9).each do |i|
-  Comment.create!(description:Faker::StarWars.quote, commentable_id: Answer.last.id, commentable_type: "Answer", user_id: User.all.pluck(:id).sample)
+  Comment.create!(description:Faker::StarWars.quote, commentable_id: Answer.all.pluck(:id).sample, commentable_type: "Answer", user_id: User.all.pluck(:id).sample)
 end
