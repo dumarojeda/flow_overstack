@@ -3,6 +3,12 @@
     <div class="question panel">
       <h1><%= @question.title %></h1>
       <p><%= @question.description %></p>
+      <h3><%= @question.comments.count %> Comments for this question</h3>
+      <% @question.comments.each do |c| %>
+        <div class="comment">
+          <%= c.description %>
+        </div>
+      <% end %>
     </div>
     <div class="answers">
       <div class="count_answers"><%= @question.answers.count %> Answers</div>
@@ -15,6 +21,12 @@
           <div class="content">
             <p><%= a.description %></p>
             <p class="time"><%= fa_icon "clock-o" %> <%= a.created_at.pretty %></p>
+            <h3><%= a.comments.count %> Comments for this answer</h3>
+            <% a.comments.each do |c| %>
+              <div class="comment">
+                <%= c.description %>
+              </div>
+            <% end %>
           </div>
           <div class="data">
 
