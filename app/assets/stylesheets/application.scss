@@ -121,8 +121,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1em;
   padding: 1em
 }
-.question-preview {
+.question-preview, .question-full, .answer_single {
   padding: 0;
+  .author, .content, .data, .votes {
+    display: inline-block;
+    vertical-align: top;
+  }
   .author {
     text-align: center;
     padding: 1em 0.5em;
@@ -136,10 +140,6 @@ h1, h2, h3, h4, h5, h6 {
       color: $color_content;
       padding: 10px 0 0 0;
     }
-  }
-  .author, .content, .data {
-    display: inline-block;
-    vertical-align: top;
   }
   .content {
     width: 73%;
@@ -220,6 +220,68 @@ h1, h2, h3, h4, h5, h6 {
           border-top: 0;
         }
       }
+    }
+  }
+  .votes {
+    width: 17%;
+    text-align: center;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style: none;
+        font-size: 2.3em;
+        .up-vote {
+          color: $color_brand;
+        }
+        .votes-total {
+          color: $color_content;
+        }
+        .down-vote {
+          color: $red;
+        }
+      }
+    }
+  }
+}
+.comments_to_question, .comments_to_answer {
+  .comment {
+    border-top: solid 1px #f1f1f1;
+    padding: 5px 0;
+    font-size: 12px;
+    &:last-child {
+      border-bottom: solid 1px #f1f1f1;
+    }
+    .author_name {
+      width: 15%;
+      font-weight: 700;
+      display: inline-block;
+      vertical-align: top;
+    }
+    .comment_text {
+      width: 85%;
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+.question-full {
+  .author {
+    text-align: center;
+    padding: 1em 0.5em;
+    width: 15%;
+    .image_author {
+      width: 60px;
+      border-radius: 50%;
+    }
+    .name_author {
+      font-size: 14px;
+    }
+  }
+  .content {
+    width: 68%;
+    .title {
+      font-weight: 700;
     }
   }
 }

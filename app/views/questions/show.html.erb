@@ -1,17 +1,33 @@
 <div class="row">
   <div class="col-sm-8">
-    <div class="question panel">
-      <h1><%= @question.title %></h1>
-      <p><%= @question.description %></p>
-      <h3><%= @question.comments.count %> Comments for this question</h3>
-      <% @question.comments.each do |c| %>
-        <div class="comment">
-          <%= c.description %>
+    <div class="question-full panel">
+      <div class="author">
+        <%= image_tag @question.user.gravatar_url, class: 'image_author'  %>
+        <div class="name_author"><%= @question.user.name %></div>
+      </div>
+      <div class="content">
+        <h1 class="title"><%= @question.title %></h1>
+        <p><%= @question.description %></p>
+        <div class="comments_to_question">      
+          <h4><%= @question.comments.count %> Comments for this question</h4>
+          <% @question.comments.each do |c| %>
+            <div class="comment">
+              <div class="author_name"><%= c.user.name %></div>
+              <div class="comment_text"><%= c.description %></div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+      <div class="votes">
+        <ul>
+          <li><a class="up-vote" href="#"><%= fa_icon "thumbs-o-up" %></a></li>
+          <li><span class="votes-total">0</span></li>
+          <li><a class="down-vote" href="#"><%= fa_icon "thumbs-o-down" %></a></li>
+        </ul>
+      </div>
     </div>
-    <div class="answers">
-      <div class="count_answers"><%= @question.answers.count %> Answers</div>
+    <div class="answers_to_question">
+      <h3><%= @question.answers.count %> Answers</h3>
       <% @question.answers.each do |a| %>
         <div class="answer_single panel">
           <div class="author">
@@ -21,15 +37,22 @@
           <div class="content">
             <p><%= a.description %></p>
             <p class="time"><%= fa_icon "clock-o" %> <%= a.created_at.pretty %></p>
-            <h3><%= a.comments.count %> Comments for this answer</h3>
-            <% a.comments.each do |c| %>
-              <div class="comment">
-                <%= c.description %>
-              </div>
-            <% end %>
+            <div class="comments_to_answer">
+              <h4><%= a.comments.count %> Comments for this answer</h4>
+              <% a.comments.each do |c| %>
+                <div class="comment">
+                  <div class="author_name"><%= c.user.name %></div>
+                  <div class="comment_text"><%= c.description %></div>
+                </div>
+              <% end %>
+            </div>
           </div>
-          <div class="data">
-
+          <div class="votes">
+            <ul>
+              <li><a class="up-vote" href="#"><%= fa_icon "thumbs-o-up" %></a></li>
+              <li><span class="votes-total">0</span></li>
+              <li><a class="down-vote" href="#"><%= fa_icon "thumbs-o-down" %></a></li>
+            </ul>
           </div>
         </div>
       <% end %>
