@@ -285,6 +285,11 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+.link {
+  color: $color_brand;
+  margin: 0.5em; 
+  display: block;
+}
 //Notifications
 .alert-danger {
   background-color: lighten($red, 10%);

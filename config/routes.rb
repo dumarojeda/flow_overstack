@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   root "questions#index"
 
-  resources :questions
+  resources :questions do
+    resources :comments, only: [:create, :destroy]
+    resources :answers, only: [:create, :destroy]
+  end
+
+  resources :answers do
+    resources :comments, only: [:create, :destroy]
+  end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'
