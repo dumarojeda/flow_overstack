@@ -7,6 +7,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    # @Vote_allow enables user to vote once
+    @vote_allow = @question.votes.where(user_id: current_user.id).size > 0
   end
 
   def new
@@ -28,7 +30,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-   
+
     redirect_to questions_path
   end
 
@@ -38,7 +40,7 @@ class QuestionsController < ApplicationController
     else
       @errors = @question.errors.full_messages
       render 'edit'
-    end 
+    end
   end
 
   private

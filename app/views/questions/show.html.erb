@@ -45,8 +45,16 @@
       </div>
       <div class="votes">
         <ul>
-          <li><a class="up-vote" href="#"><%= fa_icon "thumbs-o-up" %></a></li>
-          <li><span class="votes-total">0</span></li>
+          <li>
+            <% if @vote_allow %>
+              <span class="up-vote disabled"><%= fa_icon "thumbs-o-up" %></span>
+            <% else %>
+              <%= form_for [@question, @question.votes.new] do |f| %>
+                <%= f.button fa_icon "thumbs-o-up", class: 'up-vote' %>
+              <% end %>
+            <% end %>
+          </li>
+          <li><span class="votes-total"><%= @question.votes.size %></span></li>
           <li><a class="down-vote" href="#"><%= fa_icon "thumbs-o-down" %></a></li>
         </ul>
       </div>
