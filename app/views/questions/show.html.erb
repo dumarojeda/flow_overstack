@@ -8,7 +8,7 @@
       <div class="content">
         <h1 class="title"><%= @question.title %></h1>
         <p><%= @question.description %></p>
-        <div class="comments_to_question">      
+        <div class="comments_to_question">
           <h4><%= @question.comments.count %> Comments for this question</h4>
           <% @question.comments.each do |c| %>
             <div class="comment">
@@ -17,27 +17,31 @@
             </div>
           <% end %>
         </div>
-        <a href="" class="link add_comment">Add a comment</a>
-        <div class="form_comment">
-          <% if @errors %>
-          <div class="alert alert-danger" role="alert">
-            <ul>
-              <% @errors.each do |error| %>
-              <li><%= error %></li>
+        <% if current_user %>
+          <% if current_user.id == @question.user.id %>
+            <a href="" class="link add_comment">Add a comment</a>
+            <div class="form_comment">
+              <% if @errors %>
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                  <% @errors.each do |error| %>
+                  <li><%= error %></li>
+                  <% end %>
+                </ul>
+              </div>
               <% end %>
-            </ul>
-          </div>
-          <% end %>
-          <%= form_for [@question, @question.comments.new] do |f| %>
-            <div class="form-group">
-              <%= f.label 'Comment' %>
-              <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
+              <%= form_for [@question, @question.comments.new] do |f| %>
+                <div class="form-group">
+                  <%= f.label 'Comment' %>
+                  <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
+                </div>
+                <div class="form-group">
+                  <%= f.submit "Add Comment", class: 'btn btn-custom' %>
+                </div>
+              <% end %>
             </div>
-            <div class="form-group">
-              <%= f.submit "Add Comment", class: 'btn btn-custom' %>
-            </div>
-          <% end %>
-        </div>
+        <% end %>
+      <% end %>
       </div>
       <div class="votes">
         <ul>
@@ -67,27 +71,31 @@
                 </div>
               <% end %>
             </div>
-            <a href="" class="link add_comment">Add a comment</a>
-            <div class="form_comment">
-              <% if @errors %>
-              <div class="alert alert-danger" role="alert">
-                <ul>
-                  <% @errors.each do |error| %>
-                  <li><%= error %></li>
+            <% if current_user %>
+              <% if current_user.id == @question.user.id %>
+                <a href="" class="link add_comment">Add a comment</a>
+                <div class="form_comment">
+                  <% if @errors %>
+                  <div class="alert alert-danger" role="alert">
+                    <ul>
+                      <% @errors.each do |error| %>
+                      <li><%= error %></li>
+                      <% end %>
+                    </ul>
+                  </div>
                   <% end %>
-                </ul>
-              </div>
-              <% end %>
-              <%= form_for [a, a.comments.new] do |f| %>
-                <div class="form-group">
-                  <%= f.label 'Comment' %>
-                  <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
+                  <%= form_for [a, a.comments.new] do |f| %>
+                    <div class="form-group">
+                      <%= f.label 'Comment' %>
+                      <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.submit "Add Comment", class: 'btn btn-custom' %>
+                    </div>
+                  <% end %>
                 </div>
-                <div class="form-group">
-                  <%= f.submit "Add Comment", class: 'btn btn-custom' %>
-                </div>
-              <% end %>
-            </div>
+            <% end %>
+          <% end %>
           </div>
           <div class="votes">
             <ul>
@@ -99,29 +107,33 @@
         </div>
       <% end %>
     </div>
-    <div class="your_answer">
-      <h3>Your answer</h3>
-      <div class="form_comment panel">
-        <% if @errors %>
-        <div class="alert alert-danger" role="alert">
-          <ul>
-            <% @errors.each do |error| %>
-            <li><%= error %></li>
+    <% if current_user %>
+      <% if current_user.id == @question.user.id %>
+        <div class="your_answer">
+          <h3>Your answer</h3>
+          <div class="form_comment panel">
+            <% if @errors %>
+            <div class="alert alert-danger" role="alert">
+              <ul>
+                <% @errors.each do |error| %>
+                <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
             <% end %>
-          </ul>
+            <%= form_for [@question, @question.answers.new] do |f| %>
+              <div class="form-group">
+                <%= f.label 'Answer' %>
+                <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your answer here...' %>
+              </div>
+              <div class="form-group">
+                <%= f.submit "Add Comment", class: 'btn btn-custom' %>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <% end %>
-        <%= form_for [@question, @question.answers.new] do |f| %>
-          <div class="form-group">
-            <%= f.label 'Answer' %>
-            <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your answer here...' %>
-          </div>
-          <div class="form-group">
-            <%= f.submit "Add Comment", class: 'btn btn-custom' %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
   </div>
   <div class="col-sm-4"></div>
 </div>
