@@ -55,8 +55,16 @@
                 <% end %>
               <% end %>
             </li>
-            <li><span class="votes-total"><%= @question.votes.size %></span></li>
-            <li><a class="down-vote" href="#"><%= fa_icon "thumbs-o-down" %></a></li>
+            <li><span class="votes-total"><%= @question.votes.count %></span></li>
+            <li>
+            <% unless @vote_allow %>
+              <span class="down-vote disabled"><%= fa_icon "thumbs-o-down" %></span>
+            <% else %>
+              <%= link_to question_vote_path(@question), method: :delete do %>
+                <%= fa_icon "thumbs-o-down", class: 'down-vote' %>
+              <% end %>
+            <% end %>
+            </li>
           </ul>
         </div>
       <% end %>
