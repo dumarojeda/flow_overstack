@@ -8,7 +8,9 @@ class QuestionsController < ApplicationController
 
   def show
     # @Vote_allow enables user to vote once
-    @vote_allow = @question.votes.where(user_id: current_user.id).size > 0
+    if user_signed_in?
+      @vote_allow = @question.votes.where(user_id: current_user.id).size > 0
+    end
   end
 
   def new
