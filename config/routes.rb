@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :answers do
     resources :comments, only: [:create, :destroy]
+    resources :votes, only: [:create, :destroy]
   end
 
   devise_for :users, controllers: {

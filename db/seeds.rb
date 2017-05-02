@@ -29,7 +29,7 @@ end
 
 # Create Answers
 (1..9).each do |i|
-  Answer.create!(description: 'Opino que seria bueno encontrar la manera de dar una solucion para esta respuesta.', question_id: Question.all.pluck(:id).sample, user_id: User.all.pluck(:id).sample)
+  Answer.create!(description: Faker::ChuckNorris.fact, question_id: Question.all.pluck(:id).sample, user_id: User.all.pluck(:id).sample)
 end
 
 # Create Votes for questions

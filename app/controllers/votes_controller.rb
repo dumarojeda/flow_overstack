@@ -1,23 +1,35 @@
 class VotesController < ApplicationController
-  def new
-    @vote = Vote.new
-  end
-
   def create
-    @question = Question.find(params[:question_id])
-    @vote = @question.votes.new(params[:vote])
+    if params.has_key?(:answer_id)
+      @answer = Answer.find(params[:answer_id])
+      @question = @answer.question.id
+      @vote = @answer.votes.new(params[:vote])
+    else 
+      @question = Question.find(params[:question_id])
+      @vote = @question.votes.new(params[:vote])
+    end
+
     @vote.user_id = current_user.id
+
     if @vote.save
-      redirect_to @question
+      redirect_to question_path(@question)
     else
-      render "questions/show"
+      render questions_path
     end
   end
 
   def destroy
-    @question = Question.find(params[:question_id])
-    @vote = @question.votes.find_by(user_id: current_user.id)
-    @vote.destroy
-    redirect_to @question
+    if params.has_key?(:answer_id)
+      @answer = Answer.find(params[:answer_id])
+      @question = @answer.question.id
+      @vote = @answer.votes.find_by(user_id: current_user.id)
+      @vote.destroy
+      redirect_to question_path(@question)
+    else
+      @question = Question.find(params[:question_id])
+      @vote = @question.votes.find_by(user_id: current_user.id)
+      @vote.destroy
+      redirect_to question_path(@question)
+    end
   end
 end

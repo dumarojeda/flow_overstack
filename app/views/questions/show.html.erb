@@ -18,36 +18,34 @@
           <% end %>
         </div>
         <% if user_signed_in? %>
-          <% if current_user.id == @question.user.id %>
-            <a href="" class="link add_comment">Add a comment</a>
-            <div class="form_comment">
-              <% if @errors %>
-              <div class="alert alert-danger" role="alert">
-                <ul>
-                  <% @errors.each do |error| %>
-                  <li><%= error %></li>
-                  <% end %>
-                </ul>
-              </div>
-              <% end %>
-              <%= form_for [@question, @question.comments.new] do |f| %>
-                <div class="form-group">
-                  <%= f.label 'Comment' %>
-                  <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
-                </div>
-                <div class="form-group">
-                  <%= f.submit "Add Comment", class: 'btn btn-custom' %>
-                </div>
-              <% end %>
+          <a href="" class="link add_comment">Add a comment</a>
+          <div class="form_comment">
+            <% if @errors %>
+            <div class="alert alert-danger" role="alert">
+              <ul>
+                <% @errors.each do |error| %>
+                <li><%= error %></li>
+                <% end %>
+              </ul>
             </div>
-        <% end %>
+            <% end %>
+            <%= form_for [@question, @question.comments.new] do |f| %>
+              <div class="form-group">
+                <%= f.label 'Comment' %>
+                <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
+              </div>
+              <div class="form-group">
+                <%= f.submit "Add Comment", class: 'btn btn-custom' %>
+              </div>
+            <% end %>
+          </div>
       <% end %>
       </div>
       <% if user_signed_in? %>
         <div class="votes">
           <ul>
             <li>
-              <% if @vote_allow %>
+              <% if @vote_allow_question %>
                 <span class="up-vote disabled"><%= fa_icon "thumbs-o-up" %></span>
               <% else %>
                 <%= form_for [@question, @question.votes.new] do |f| %>
@@ -57,7 +55,7 @@
             </li>
             <li><span class="votes-total"><%= @question.votes.count %></span></li>
             <li>
-            <% unless @vote_allow %>
+            <% unless @vote_allow_question %>
               <span class="down-vote disabled"><%= fa_icon "thumbs-o-down" %></span>
             <% else %>
               <%= link_to question_vote_path(@question), method: :delete do %>
@@ -90,67 +88,77 @@
               <% end %>
             </div>
             <% if user_signed_in? %>
-              <% if current_user.id == @question.user.id %>
-                <a href="" class="link add_comment">Add a comment</a>
-                <div class="form_comment">
-                  <% if @errors %>
-                  <div class="alert alert-danger" role="alert">
-                    <ul>
-                      <% @errors.each do |error| %>
-                      <li><%= error %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                  <% end %>
-                  <%= form_for [a, a.comments.new] do |f| %>
-                    <div class="form-group">
-                      <%= f.label 'Comment' %>
-                      <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
-                    </div>
-                    <div class="form-group">
-                      <%= f.submit "Add Comment", class: 'btn btn-custom' %>
-                    </div>
-                  <% end %>
+
+              <a href="" class="link add_comment">Add a comment</a>
+              <div class="form_comment">
+                <% if @errors %>
+                <div class="alert alert-danger" role="alert">
+                  <ul>
+                    <% @errors.each do |error| %>
+                    <li><%= error %></li>
+                    <% end %>
+                  </ul>
                 </div>
-            <% end %>
+                <% end %>
+                <%= form_for [a, a.comments.new] do |f| %>
+                  <div class="form-group">
+                    <%= f.label 'Comment' %>
+                    <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your comment here...' %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.submit "Add Comment", class: 'btn btn-custom' %>
+                  </div>
+                <% end %>
+              </div>
+
           <% end %>
           </div>
           <div class="votes">
             <ul>
-              <li><a class="up-vote" href="#"><%= fa_icon "thumbs-o-up" %></a></li>
-              <li><span class="votes-total">0</span></li>
-              <li><a class="down-vote" href="#"><%= fa_icon "thumbs-o-down" %></a></li>
+              <li>
+                <% if @vote_allow_answer %>
+                  <span class="up-vote disabled"><%= fa_icon "thumbs-o-up" %></span>
+                <% else %>
+                  <%= form_for [a, a.votes.new] do |f| %>
+                    <%= f.button fa_icon "thumbs-o-up", class: 'up-vote' %>
+                  <% end %>
+                <% end %>
+              </li>
+              <li><span class="votes-total"><%= a.votes.count %></span></li>
+              <li>
+                <%= link_to answer_vote_path(a), method: :delete do %>
+                  <%= fa_icon "thumbs-o-down", class: 'down-vote' %>
+                <% end %>
+              </li>
             </ul>
           </div>
         </div>
       <% end %>
     </div>
     <% if user_signed_in? %>
-      <% if current_user.id == @question.user.id %>
-        <div class="your_answer">
-          <h3>Your answer</h3>
-          <div class="form_comment panel">
-            <% if @errors %>
-            <div class="alert alert-danger" role="alert">
-              <ul>
-                <% @errors.each do |error| %>
-                <li><%= error %></li>
-                <% end %>
-              </ul>
-            </div>
-            <% end %>
-            <%= form_for [@question, @question.answers.new] do |f| %>
-              <div class="form-group">
-                <%= f.label 'Answer' %>
-                <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your answer here...' %>
-              </div>
-              <div class="form-group">
-                <%= f.submit "Add Comment", class: 'btn btn-custom' %>
-              </div>
-            <% end %>
+      <div class="your_answer">
+        <h3>Your answer</h3>
+        <div class="form_comment panel">
+          <% if @errors %>
+          <div class="alert alert-danger" role="alert">
+            <ul>
+              <% @errors.each do |error| %>
+              <li><%= error %></li>
+              <% end %>
+            </ul>
           </div>
+          <% end %>
+          <%= form_for [@question, @question.answers.new] do |f| %>
+            <div class="form-group">
+              <%= f.label 'Answer' %>
+              <%= f.text_area :description, rows: 10, class: 'form-control', placeholder: 'Write your answer here...' %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "Add Comment", class: 'btn btn-custom' %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
   <div class="col-sm-4"></div>
