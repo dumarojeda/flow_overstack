@@ -303,6 +303,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0.5em;
   display: block;
 }
+.form_comment {
+  display: none;
+}
 //Notifications
 .alert-danger {
   background-color: lighten($red, 10%);
