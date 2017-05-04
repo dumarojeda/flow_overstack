@@ -113,32 +113,34 @@
 
           <% end %>
           </div>
-          <div class="votes">
-            <ul>
-              <li>
-                <% if @vote_allow_answer %>
-                  <span class="up-vote disabled"><%= fa_icon "thumbs-o-up" %></span>
-                <% else %>
-                  <%= form_for [a, a.votes.new] do |f| %>
-                    <%= f.button fa_icon "thumbs-o-up", class: 'up-vote' %>
+          <% if user_signed_in? %>
+            <div class="votes">
+              <ul>
+                <li>
+                  <% if @vote_allow_answer %>
+                    <span class="up-vote disabled"><%= fa_icon "thumbs-o-up" %></span>
+                  <% else %>
+                    <%= form_for [a, a.votes.new] do |f| %>
+                      <%= f.button fa_icon "thumbs-o-up", class: 'up-vote' %>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </li>
-              <li><span class="votes-total"><%= a.votes.count %></span></li>
-              <li>
-                <%= link_to answer_vote_path(a), method: :delete do %>
-                  <%= fa_icon "thumbs-o-down", class: 'down-vote' %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
+                </li>
+                <li><span class="votes-total"><%= a.votes.count %></span></li>
+                <li>
+                  <%= link_to answer_vote_path(a), method: :delete do %>
+                    <%= fa_icon "thumbs-o-down", class: 'down-vote' %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
     <% if user_signed_in? %>
       <div class="your_answer">
         <h3>Your answer</h3>
-        <div class="form_answer panel">
+        <div class="form_comment panel">
           <% if @errors %>
           <div class="alert alert-danger" role="alert">
             <ul>
