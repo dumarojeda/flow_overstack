@@ -18,7 +18,7 @@
           <% end %>
         </div>
         <% if user_signed_in? %>
-          <a href="" class="link add_comment">Add a comment</a>
+          <a href="#" class="link" id="add_comment">Add a comment</a>
           <div class="form_comment">
             <% if @errors %>
             <div class="alert alert-danger" role="alert">
@@ -89,7 +89,7 @@
             </div>
             <% if user_signed_in? %>
 
-              <a href="" class="link add_comment">Add a comment</a>
+              <a href="#" class="link" id="add_comment">Add a comment</a>
               <div class="form_comment">
                 <% if @errors %>
                 <div class="alert alert-danger" role="alert">
