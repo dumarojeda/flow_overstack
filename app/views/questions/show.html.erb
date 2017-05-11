@@ -117,6 +117,7 @@
             <div class="votes">
               <ul>
                 <li>
+                  <% @vote_allow_answer = a.votes.where(user_id: current_user.id).size > 0 %>
                   <% if @vote_allow_answer %>
                     <span class="up-vote disabled"><%= fa_icon "thumbs-o-up" %></span>
                   <% else %>
@@ -127,8 +128,12 @@
                 </li>
                 <li><span class="votes-total"><%= a.votes.count %></span></li>
                 <li>
-                  <%= link_to answer_vote_path(a), method: :delete do %>
-                    <%= fa_icon "thumbs-o-down", class: 'down-vote' %>
+                  <% unless @vote_allow_answer %>
+                    <span class="down-vote disabled"><%= fa_icon "thumbs-o-down" %></span>
+                  <% else %>
+                    <%= link_to answer_vote_path(a), method: :delete do %>
+                      <%= fa_icon "thumbs-o-down", class: 'down-vote' %>
+                    <% end %>
                   <% end %>
                 </li>
               </ul>

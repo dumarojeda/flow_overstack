@@ -10,9 +10,9 @@ class QuestionsController < ApplicationController
     # @Vote_allow enables user to vote once
     if user_signed_in?
       @vote_allow_question = @question.votes.where(user_id: current_user.id).size > 0
-      @question.answers.each do |answer|
-        @vote_allow_answer = answer.votes.where(user_id: current_user.id).size > 0
-      end
+      # @question.answers.each do |answer|
+      #   @vote_allow_answer = answer.votes.where(user_id: current_user.id).size > 0
+      # end
     end
   end
 
