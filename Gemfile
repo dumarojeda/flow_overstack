@@ -39,8 +39,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # Use Bootstrap Sass Gem for basic stylesheets
 gem 'bootstrap-sass'
-# Use Gravtastic for get gravatar of the users
-gem 'gravtastic'
 # Use Fontawesome Gem for Icons
 gem "font-awesome-rails"
 # Use Hublot gem for prettify Dates

@@ -4,7 +4,7 @@
     <% @questions.each do |q| %>
       <div class='question-preview panel'>
         <div class="author">
-          <%= image_tag q.user.gravatar_url, class: 'image_author'  %>
+          <%= image_tag("default-user.png", :class => "image_author") %>
           <div class="name_author"><%= q.user.name %></div>
         </div>
         <div class="content">
