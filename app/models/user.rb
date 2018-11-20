@@ -13,7 +13,4 @@ class User < ApplicationRecord
 
   validates :email, :uniqueness => true, :format => {:with => /\A\b[A-Z0-9\.\_\%\-\+]+@(?:[A-Z0-9\-]+\.)+[A-Z]{2,6}\b\z/i}
 
-  #Include gem for Gravatar
-  include Gravtastic
-  gravtastic
 end
