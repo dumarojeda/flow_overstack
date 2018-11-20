@@ -2,7 +2,7 @@
   <div class="col-sm-8">
     <div class="question-full panel">
       <div class="author">
-        <%= image_tag @question.user.gravatar_url, class: 'image_author'  %>
+        <%= image_tag("default-user.png", :class => "image_author") %>
         <div class="name_author"><%= @question.user.name %></div>
       </div>
       <div class="content">
@@ -72,7 +72,7 @@
       <% @question.answers.each do |a| %>
         <div class="answer_single panel">
           <div class="author">
-            <%= image_tag a.user.gravatar_url, class: 'image_author'  %>
+            <%= image_tag("default-user.png", :class => "image_author") %>
             <div class="name_author"><%= a.user.name %></div>
           </div>
           <div class="content">

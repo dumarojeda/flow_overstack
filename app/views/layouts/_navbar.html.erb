@@ -30,7 +30,7 @@
         <% if current_user %>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.gravatar_url, class: 'image_gravatar'  %><span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag("default-user.png", :class => "image_gravatar") %><span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Hi, <%= current_user.name %></a></li>
               <li role="separator" class="divider"></li>
