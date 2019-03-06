@@ -1,24 +1,13 @@
-# README
+# FlowOverstack
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FlowOverstack es un clone de Stackoverflow, fue realizada en Ruby on Rails.
 
-Things you may want to cover:
+## Credenciales
 
-* Ruby version
+Para acceder y revisar el app puedes entrar en [heroku](https://flowoverstackdom.herokuapp.com/)
 
-* System dependencies
+  * Email: dumarojeda@gmail.com
+  * Contraseña: 123456
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Contributing & Credit
+  * Dumar Ojeda
